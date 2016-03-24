@@ -97,7 +97,7 @@ inside a virtual, make the value of `type` as a definition:
 ```
 
 #### Child-Schema
-A child schema is an array of schemas. For example:
+A child schema is accepted as array of schemas. For example:
 ```javascript
 {
     prop: [{
