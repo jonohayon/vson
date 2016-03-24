@@ -75,7 +75,7 @@ The available types are:
 The available definition types are (+ their default values):
 - type (required for each definition)
 - default
-- required
+- required (default: false)
 - min
 - max
 - lowercase
