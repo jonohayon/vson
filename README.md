@@ -56,7 +56,7 @@ FooModel.validate({ prop: "not a number. ha." }, function(err) {
 ```
 
 ## Dictionary
-A schema child called `property`. A `property` value can be one of the following:
+A schema's child called `property`. A `property` value can be one of the following:
 
 #### Only a Type
 If the property value is only a type (types can be found below), so
