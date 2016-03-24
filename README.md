@@ -10,7 +10,6 @@ a similar technique to Mongoose, which uses defined schemas for validation.
 $ npm install vson
 ```
 
-
 ## Usage
 It is the same as mongoose: just declare a new schema as the following:
 ```javascript
@@ -54,6 +53,58 @@ Or just do it like this:
 FooModel.validate({ prop: "not a number. ha." }, function(err) {
     // nah
 });
+```
+
+## Dictionary
+A schema child called `property`. A `property` value can be one of the following:
+
+#### Only a Type
+If the property value is only a type (types can be found below), so
+    it gains the default values for a definition. For example:
+```javascript
+{
+    prop: Date
+}
+```
+
+#### Definition
+A definition is the property's settings. For example:
+```javascript
+{
+    prop: { type: String, default: 'wat' } // This is a definition
+}
+```
+
+#### Virtual
+A virtual is just a child object. For example:
+```javascript
+{
+    prop: { // This is a virtual
+        inside: String,
+        yay: { type: String }
+    }
+}
+```
+If there is a child property of `type`, the property value is considered
+ 'as a *definition*. If you need to include a `type` property
+inside a virtual, make the value of `type` as a definition:
+```javascript
+{
+    prop: {
+        type: { type: Boolean }
+    }
+}
+```
+
+#### Child-Schema
+A child schema is an array of schemas. For example:
+```javascript
+{
+    prop: [{
+        prop: String,
+        wow: { type: Number }
+    }]
+}
 ```
 
 ## Supported features
