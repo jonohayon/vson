@@ -86,4 +86,4 @@ Yep. There is a dogfooding scenario here. <br>
 The definition validation - it basically uses a model validation.
 
 ## License
-MIT © [Yarden Sod-Moriah](https://yardnsm.net/)
+MIT © [Yarden Sod-Moriah](http://yardnsm.net/)
