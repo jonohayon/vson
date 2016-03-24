@@ -64,5 +64,26 @@ this not MongoDB we talking about, so there are a few differences between mongoo
 - No indexes
 - No middlewares
 
+Currently, there is a limited support for types and properties definitions.
+The available types are:
+- String
+- Number
+- Date
+- Boolean
+- Array
+
+The available definition types are (+ their default values):
+- type (required for each definition)
+- default
+- required
+- min
+- max
+- lowercase
+- uppercase
+
+## Dogfooding
+Yep. There is a dogfooding scenario here. <br>
+The definition validation - it basically uses a model validation.
+
 ## License
 MIT © [Yarden Sod-Moriah](https://yardnsm.net/)
