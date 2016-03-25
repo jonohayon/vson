@@ -23,29 +23,17 @@ var FooSchema = new Schema({
 
 Create a model:
 ```javascript
-var FooModel = vson.model(FooSchema);
-
-var foo1 = new FooModel({
-    bar: 5
-});
-
-// You can also change the properties after setting the schema
-foo1.bar = 7;
+var fooModel = vson.model(FooSchema);
 ```
 
 Validate a model:
 ```javascript
 // Validation (sync)
-var result = foo.validateSync(); //=> true
+var result = fooModel.validateSync(); //=> true
 
 // Validation (async)
-foo.validate(function(err) {
+fooModel.validate({ bar: 5 }, function(err) {
     //=> error = null
-});
-
-// Direct validation
-FooModel.validate({ bar: 5 }, function(err) {
-    // ...
 });
 ```
 

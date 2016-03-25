@@ -37,7 +37,7 @@ describe.only('Schema', function () {
                 prop1: null
             });
 
-            expect(s.validate.bind(s)).to.throw(Error);
+            expect(s.validate.bind(null, s)).to.throw(Error);
             done();
         });
 
@@ -46,7 +46,7 @@ describe.only('Schema', function () {
                 prop1: 'not-a-type'
             });
 
-            expect(s.validate.bind(s)).to.throw(Error);
+            expect(s.validate.bind(null, s)).to.throw(Error);
             done();
         });
 
@@ -55,7 +55,7 @@ describe.only('Schema', function () {
                 prop1: { type: String, shouldNoBeHere: 'wat' }
             });
 
-            expect(s.validate.bind(s)).to.throw(Error);
+            expect(s.validate.bind(null, s)).to.throw(Error);
             done();
         });
 
