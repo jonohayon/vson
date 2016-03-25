@@ -86,7 +86,7 @@ A virtual is just a child object. For example:
 }
 ```
 If there is a child property of `type`, the property value is considered
- 'as a *definition*. If you need to include a `type` property
+as a *definition*. If you need to include a `type` property
 inside a virtual, make the value of `type` as a definition:
 ```javascript
 {
@@ -97,7 +97,7 @@ inside a virtual, make the value of `type` as a definition:
 ```
 
 #### Child-Schema
-A child schema is accepted as array of schemas. For example:
+A child schema is accepted as array of one schema. For example:
 ```javascript
 {
     prop: [{
