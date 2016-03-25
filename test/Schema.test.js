@@ -16,8 +16,8 @@ describe.only('Schema', function () {
 
         it('should return true if Schema is fine', function (done) {
             var s = new Schema({
-                prop1: String,                                     // Only a type
-                prop2: { type: Number, required: false },          // With a 'definition'
+                prop1: Buffer,                                     // Only a type
+                prop2: { type: Buffer, required: false },          // With a 'definition'
                 prop3: { type: { type: Boolean }, foo: String },   // Type is actually an inner-child (virtual)
                 prop4: { foo: { bar: { baz: Date} } },             // Inner child
                 prop5: [{                                          // An array (child schema)

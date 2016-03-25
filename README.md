@@ -53,6 +53,7 @@ FooModel.validate({ bar: 5 }, function(err) {
 A schema's child called a `property`. A property value can be one of the following:
 
 #### Only a Type
+You can see all the types [here](http://github.com/yardnsm/vson/blob/master/lib/defaults.js).
 If the property value is only a type, it gains the default
 values for a definition. For example:
 ```javascript
@@ -62,6 +63,7 @@ values for a definition. For example:
 ```
 
 #### Definition
+You can see all the appropriate definitions [here](http://github.com/yardnsm/vson/blob/master/lib/defaults.js).
 A definition is the property's settings. For example:
 ```javascript
 {
