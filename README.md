@@ -28,10 +28,7 @@ var fooModel = vson.model(FooSchema);
 
 Validate a model:
 ```javascript
-// Validation (sync)
-var result = fooModel.validateSync(); //=> true
-
-// Validation (async)
+// Validation
 fooModel.validate({ bar: 5 }, function(err) {
     //=> error = null
 });
