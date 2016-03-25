@@ -136,6 +136,10 @@ Default: `false`
 Type: `boolean`<br>
 Default: `false`
 
+##### allowExtras
+Type: `boolean`<br>
+Default: `false`
+
 Requires all the given properties (include childs), unless the property's definition says differently.
 
 ## License

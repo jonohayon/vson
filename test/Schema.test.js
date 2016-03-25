@@ -19,8 +19,8 @@ describe.only('Schema', function () {
                 prop1: Buffer,                                     // Only a type
                 prop2: { type: Buffer, required: false },          // With a 'definition'
                 prop3: { type: { type: Boolean }, foo: String },   // Type is actually an inner-child (virtual)
-                prop4: { foo: { bar: { baz: Date} } },             // Inner child
-                prop5: [{                                          // An array (child schema)
+                prop4: { foo: { bar: { baz: Date} } },             // Inner child (virtual)
+                prop5: [{                                          // Embedded schema
                     prop1: String,
                     prop2: { type: Number, required: false },
                     prop3: { type: { type: Boolean }, foo: String },
