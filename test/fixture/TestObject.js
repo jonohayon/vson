@@ -1,5 +1,5 @@
 module.exports = {
-    prop: 'yay',
+    prop1: 'yay',
     prop2: 5,
     prop3: { type: true, foo: 'bar' },
     prop4: { foo: { bar: { baz: new Date() } } },

@@ -28,4 +28,36 @@ describe.only('model', function () {
             done();
         });
     });
+
+    describe('validation', function () {
+
+        var testModel = model(TestSchema);
+
+        it('should fire up a callback once the validation is done', function (done) {
+            testModel.validate(TestObject, function(err) {
+                done();
+            });
+        });
+
+        describe('error', function () {
+
+            it('should have a value of null if test is fine', function (done) {
+                testModel.validate(TestObject, function(err) {
+                    expect(err).to.be.null;
+                    done();
+                });
+            });
+
+            it('should not be null if test went wrong', function (done) {
+
+                var tmp = TestObject;
+                tmp.prop = 5;
+
+                testModel.validate(tmp, function(err) {
+                    expect(err).to.not.be.null;
+                    done();
+                });
+            });
+        });
+    });
 });
