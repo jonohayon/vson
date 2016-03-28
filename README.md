@@ -4,6 +4,9 @@
 **Vson** is an object validator for nodejs. It uses
 a similar technique to Mongoose, which uses defined schemas for validation.
 
+## Suspension notice
+This project is currently suspended. Yea that's it pretty much.
+
 ## Install
 
 ```bash
