@@ -2,10 +2,9 @@
 > JavaScript object validator, using schemas
 
 **Vson** is an object validator for nodejs. It uses
-a similar technique to Mongoose, which uses defined schemas for validation.
-
-## Suspension notice
-This project is currently suspended. Yea that's it pretty much.
+a similar technique to Mongoose, which uses defined schemas for validation. However,
+there are no models here. The validation is being done by passing the schema
+and the object to validate.
 
 ## Install
 
@@ -17,38 +16,23 @@ $ npm install vson
 Create a schema:
 ```javascript
 var vson = require('vson');
-var Schema = vson.Schema;
-
-var FooSchema = new Schema({
+var FooSchema = new vson.Schema({
     bar: Number
 });
 ```
 
-Create a model:
+Validate an object:
 ```javascript
-var fooModel = vson.model(FooSchema);
-```
+var vson = require('vson');
+var FooValidator = new vson.Validator(FooSchema, { allowNulls: true });
 
-Validate a model:
-```javascript
-// Validation
-fooModel.validate({ bar: 5 }, function(err) {
+FooValidator.validate({ bar: 5 }, function(err) {
     //=> error = null
 });
 ```
 
 ### Schema's Rules
 A schema's child called a `property`. A property value can be one of the following:
-
-#### Only a Type
-You can see all the types [here](http://github.com/yardnsm/vson/blob/master/lib/defaults.js).
-If the property value is only a type, it gains the default
-values for a definition. For example:
-```javascript
-{
-    prop: Date
-}
-```
 
 #### Definition
 You can see all the appropriate definitions [here](http://github.com/yardnsm/vson/blob/master/lib/defaults.js).
@@ -59,19 +43,34 @@ A definition is the property's settings. For example:
 }
 ```
 
+#### Only a Type
+You can see all the types [here](http://github.com/yardnsm/vson/blob/master/lib/defaults.js).
+For example:
+```javascript
+{
+    prop: Date
+}
+```
+
+If the property value is only a type, it gains the default values for
+its definition. The default definition value:
+```javascript
+{ type: String } // Could be any specified type
+```
+
 #### Virtual
 A virtual is just a child object. For example:
 ```javascript
 {
     prop: { // This is a virtual
         inside: String,
-        yay: { type: String }
+        yay: { type: String, required: true }
     }
 }
 ```
 
 #### Embedded Schema
-An embedded schema is accepted as the following:
+An embedded schema is basically just an array of virtuals. For example:
 ```javascript
 {
     prop: [{
@@ -82,9 +81,10 @@ An embedded schema is accepted as the following:
 ```
 
 #### wat
-If there is a property of `type`, the property value is considered
+If there is a property called `type`, the property value is considered
 as a *definition*. If you need to include a `type` property
-inside a virtual, make the value of `type` as a definition:
+inside a virtual, make the value of `type` as a definition. In other words, if there
+is a `type` property inside, so the value considered as a definition.
 ```javascript
 {
     wrong: {
@@ -98,23 +98,30 @@ inside a virtual, make the value of `type` as a definition:
 
 ## API
 
-### vson.Schema(schema);
+### vson.Schema(schema); `[instance]`
+Creates a new vson schema instance.
 
 #### Schema
 Type: `object`
 
+
 ### vson.Schema().validate([schema]);
+Validate a schema's structure.
 
 #### schema
 Type: `object`<br>
 Default: `this.schema`
 
-### vson.model(Schema, [options]);
+
+### vson.Validator(Schema, [options]); `[instance]`
+Creates a new vson validator instance.
 
 #### Schema
 Type: `vson.Schema`
 
 #### [options]
+Type: `object`<br>
+Default: `{}`
 
 ##### allowNulls
 Type: `boolean`<br>
@@ -128,7 +135,14 @@ Default: `false`
 Type: `boolean`<br>
 Default: `false`
 
-Requires all the given properties (include childs), unless the property's definition says differently.
+### vson.Validator().validate(obj, callback);
+Validate an object accroding to a schema.
+
+#### obj
+Type: `object`
+
+#### callback
+Type: `function`
 
 ## License
 MIT © [Yarden Sod-Moriah](http://yardnsm.net/)

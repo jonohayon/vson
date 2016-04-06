@@ -32,7 +32,7 @@ describe.only('Schema', function () {
             done();
         });
 
-        it('should throw a property is null', function (done) {
+        it('should throw an error if a property is null', function (done) {
             var s = new Schema({
                 prop1: null
             });
