@@ -149,5 +149,10 @@ Type: `object`
 #### callback
 Type: `function`
 
+## TODO
+- [ ] Finish the validator
+- [ ] ES2015ify it
+- [ ] Promisify it
+
 ## License
 MIT © [Yarden Sod-Moriah](http://yardnsm.net/)
