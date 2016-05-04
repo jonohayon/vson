@@ -58,6 +58,11 @@ its definition. The default definition value:
 { type: String } // Could be any specified type
 ```
 
+You could even allow multiple types, like so:
+```javascript
+{ type: [String, Number] } // Could be string or a number
+```
+
 #### Virtual
 A virtual is just a child object. For example:
 ```javascript

@@ -17,10 +17,11 @@ describe.only('Schema', function () {
         it('should return true if Schema is fine', function (done) {
             var s = new Schema({
                 prop1: Buffer,                                     // Only a type
-                prop2: { type: Buffer, required: false },          // With a 'definition'
                 prop3: { type: { type: Boolean }, foo: String },   // Type is actually an inner-child (virtual)
                 prop4: { foo: { bar: { baz: Date} } },             // Inner child (virtual)
-                prop5: [{                                          // Embedded schema
+                prop2: { type: Buffer, required: false },          // With a 'definition'
+                prop5: [String, Number],                           // Multiple types
+                prop6: [{                                          // Embedded schema
                     prop1: String,
                     prop2: { type: Number, required: false },
                     prop3: { type: { type: Boolean }, foo: String },
@@ -37,16 +38,17 @@ describe.only('Schema', function () {
                 prop1: null
             });
 
-            expect(s.validate.bind(null, s)).to.throw(Error);
+            expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
             done();
         });
 
         it('should throw an error if there is a wrong type', function (done) {
             var s = new Schema({
-                prop1: 'not-a-type'
+                prop1: 'not-a-type',
+                prop2: ['nope.', String]
             });
 
-            expect(s.validate.bind(null, s)).to.throw(Error);
+            expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
             done();
         });
 
@@ -55,7 +57,7 @@ describe.only('Schema', function () {
                 prop1: { type: String, shouldNoBeHere: 'wat' }
             });
 
-            expect(s.validate.bind(null, s)).to.throw(Error);
+            expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
             done();
         });
 
