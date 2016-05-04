@@ -1,6 +1,6 @@
 {
   "name": "vson",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "JavaScript object validator, using schemas",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YardNsm/vson.git"
+    "url": "git+https://github.com/yardnsm/vson.git"
   },
   "author": "Yarden Sod-Moriah",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/YardNsm/vson/issues"
+    "url": "https://github.com/yardnsm/vson/issues"
   },
   "devDependencies": {
     "chai": "^3.5.0",
