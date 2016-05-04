@@ -1,4 +1,4 @@
-# vson
+# vson [WIP]
 > JavaScript object validator, using schemas
 
 **Vson** is an object validator for nodejs. It uses
