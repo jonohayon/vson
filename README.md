@@ -15,16 +15,16 @@ $ npm install vson
 ## Usage
 Create a schema:
 ```javascript
-var vson = require('vson');
-var FooSchema = new vson.Schema({
+const { Schema } = require('vson');
+const FooSchema = new Schema({
     bar: Number
 });
 ```
 
 Validate an object:
 ```javascript
-var vson = require('vson');
-var FooValidator = new vson.Validator(FooSchema, { allowNulls: true });
+var { Validator } = require('vson');
+var FooValidator = new Validator(FooSchema, { allowNulls: true });
 
 FooValidator.validate({ bar: 5 }, function(err) {
     //=> error = null
@@ -103,14 +103,14 @@ is a `type` property inside, so the value considered as a definition.
 
 ## API
 
-### vson.Schema(schema); `[instance]`
+### Schema(schema); `[instance]`
 Creates a new vson schema instance.
 
 #### Schema
 Type: `object`
 
 
-### vson.Schema().validate([schema]);
+### Schema().validate([schema]);
 Validate a schema's structure.
 
 #### schema
@@ -118,7 +118,7 @@ Type: `object`<br>
 Default: `this.schema`
 
 
-### vson.Validator(Schema, [options]); `[instance]`
+### Validator(Schema, [options]); `[instance]`
 Creates a new vson validator instance.
 
 #### Schema
@@ -140,7 +140,7 @@ Default: `false`
 Type: `boolean`<br>
 Default: `false`
 
-### vson.Validator().validate(obj, callback);
+### Validator().validate(obj, callback);
 Validate an object accroding to a schema.
 
 #### obj
@@ -150,8 +150,8 @@ Type: `object`
 Type: `function`
 
 ## TODO
+- [x] ES2015ify it
 - [ ] Finish the validator
-- [ ] ES2015ify it
 - [ ] Promisify it
 
 ## License

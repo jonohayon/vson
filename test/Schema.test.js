@@ -1,20 +1,16 @@
-var Schema = require('../lib/Schema');
-var expect = require('chai').expect;
+const Schema = require('../lib/Schema');
+const { expect } = require('chai');
 
-describe.only('Schema', function () {
-
-    describe('constructor', function () {
-
-        it('should create an instance', function (done) {
+describe.only('Schema', () => {
+    describe('constructor', () => {
+        it('should create an instance', () => {
             var s = new Schema({});
             expect(s).to.be.instanceOf(Schema);
-            done();
         });
     });
 
-    describe('validator', function () {
-
-        it('should return true if Schema is fine', function (done) {
+    describe('validator', () => {
+        it('should return true if Schema is fine', () => {
             var s = new Schema({
                 prop1: Buffer,                                     // Only a type
                 prop3: { type: { type: Boolean }, foo: String },   // Type is actually an inner-child (virtual)
@@ -30,36 +26,31 @@ describe.only('Schema', function () {
             });
 
             expect(s.validate()).to.be.true;
-            done();
         });
 
-        it('should throw an error if a property is null', function (done) {
+        it('should throw an error if a property is null', () => {
             var s = new Schema({
                 prop1: null
             });
 
             expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
-            done();
         });
 
-        it('should throw an error if there is a wrong type', function (done) {
+        it('should throw an error if there is a wrong type', () => {
             var s = new Schema({
                 prop1: 'not-a-type',
                 prop2: ['nope.', String]
             });
 
             expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
-            done();
         });
 
-        it('should throw an error if there is a wrong definition', function (done) {
+        it('should throw an error if there is a wrong definition', () => {
             var s = new Schema({
                 prop1: { type: String, shouldNoBeHere: 'wat' }
             });
 
             expect(s.validate.bind(null, s.getSchema())).to.throw(Error);
-            done();
         });
-
     });
 });
